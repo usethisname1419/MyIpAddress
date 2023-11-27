@@ -3,7 +3,7 @@ Easily get your public IP address along with LAN info and list all your open por
 
 myipar - Public IP, Network Interface Info, and Open Ports Viewer
 
-This Python script (myscript.py) provides information about the public IP address, local network interface details, and open ports on your machine.
+This Python script (myipar.py) provides information about the public IP address, local network interface details, and open ports on your machine.
 Usage:
 
   Install Dependencies:
