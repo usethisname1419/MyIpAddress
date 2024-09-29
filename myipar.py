@@ -3,17 +3,17 @@
 import socket
 import psutil
 import argparse
+import requests
 
 def get_public_ip():
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    public_ip = s.getsockname()[0]
-    s.close()
-    return public_ip
+    try:
+        response = requests.get('https://ifconfig.me')
+        public_ip = response.text.strip()
+        return public_ip
+    except requests.RequestException:
+        return "Unable to get public IP"
 
 def get_network_info():
-
     network_info = {}
     for interface, addrs in psutil.net_if_addrs().items():
         interface_info = []
@@ -33,7 +33,6 @@ def get_network_info():
     return network_info
 
 def get_open_ports():
-
     open_ports = []
     for conn in psutil.net_connections(kind='inet'):
         port = conn.laddr.port
@@ -50,8 +49,8 @@ def main():
     args = parser.parse_args()
 
     public_ip = get_public_ip()
-    print(f"Public IP Address: ")
-    print(f"  IP Address: {public_ip}")
+    print(f"Public IP Address: {public_ip}")
+
     network_info = get_network_info()
     print("\nLocal Network Interface Information:")
     for interface, info in network_info.items():
