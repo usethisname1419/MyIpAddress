@@ -35,3 +35,6 @@ Options:
       myipar -p
 
 
+# Support
+
+If you would like to supprot my efforts you can send me a few buck with BitCoin @ :`bc1qtezfajhysn6dut07m60vtg0s33jy8tqcvjqqzk`
